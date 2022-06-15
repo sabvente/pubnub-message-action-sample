@@ -22,5 +22,13 @@ fun Menu(
         },
         message = message,
         onDismiss = onDismiss,
+        headerContent = {
+            DefaultReactionsPickerRenderer.ReactionsPicker { reaction ->
+                message?.let {
+                    onAction(React(reaction, message))
+                    onDismiss()
+                }
+            }
+        }
     )
 }
